@@ -1,18 +1,26 @@
 package com.company.objects;
 
-public class Student {
+public class Books {
     private int id;
     private String name;
-    private int age;
+    private int price;
 
-    public Student() {
+    public Books() {
 
     }
 
-    public Student(int id, String name, int age) {
+    public Books(int id, String name, int price) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public int getId() {
@@ -23,19 +31,11 @@ public class Student {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
