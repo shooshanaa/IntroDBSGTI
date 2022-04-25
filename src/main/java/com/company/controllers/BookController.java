@@ -16,8 +16,8 @@ public class BookController {
     private static ResultSet rs;
 
     public static boolean addBook() {
-        System.out.print("Enter the name of the book: ");
-        String name = scanner.next();
+        System.out.println("Enter the name of the book: ");
+        String name = scanner.nextLine();
         System.out.println("Enter the price of the book: ");
         int price = scanner.nextInt();
         try {
