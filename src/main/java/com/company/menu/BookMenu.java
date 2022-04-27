@@ -13,6 +13,7 @@ public class BookMenu {
         System.out.println("1. Add a new book");
         System.out.println("2. Get book by ID");
         System.out.println("3. Delete a book");
+        System.out.println("4. Edit book data");
 
 
         System.out.println("Select an option: ");
@@ -27,6 +28,9 @@ public class BookMenu {
                 break;
             case 3:
                 System.out.println(BookController.deleteBook() ? "Delete completed" : "Book is not deleted");
+                break;
+            case 4:
+                BookController.editBook();
                 break;
             default:
                 System.out.println("Invalid option. Try again.");

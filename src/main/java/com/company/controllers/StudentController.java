@@ -63,4 +63,79 @@ public class StudentController {
 
     }
 
+    public static void editStudent(){
+        System.out.println("Enter the ID of the student: ");
+        int id = scanner.nextInt();
+
+        System.out.println("What field would you like to edit? (name, age) ");
+        String fieldToEdit = scanner.next();
+
+        System.out.println("What value do you want to enter? ");
+        String update = scanner.next();
+
+        try {
+            ps = getConnection().prepareStatement("UPDATE students SET " + fieldToEdit + " = '" + update + "' WHERE id=" + id);
+            ps.execute();
+            System.out.println("Successfully updated student data");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void deleteStudent(){
+        System.out.println("Enter the id of the student: ");
+        int id = scanner.nextInt();
+
+        try {
+            ps = getConnection().prepareStatement("DELETE FROM students WHERE id = " + id);
+            ps.execute();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean addStudentScores(){
+        System.out.println("Enter the id of the student: ");
+        int id = scanner.nextInt();
+
+        System.out.println("Enter the mathematics score of the student: ");
+        int math = scanner.nextInt();
+
+        System.out.println("Enter the English score of the student: ");
+        int eng = scanner.nextInt();
+
+        System.out.println("Enter the Physics score of the student: ");
+        int physics = scanner.nextInt();
+
+        System.out.println("Enter the Chemistry score of the student: ");
+        int chemistry = scanner.nextInt();
+
+
+        try {
+            ps = getConnection().prepareStatement("INSERT INTO scores(studentid, mathematics, english, physics, chemistry) VALUES(" + id + ", " + math + ", " + eng + ", "+ physics + ", "+ chemistry +")");
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Database error");
+            return false;
+        }
+    }
+
+    public static boolean deleteScore(){
+        System.out.println("Enter the id of the student: ");
+        int studentid = scanner.nextInt();
+
+        try {
+            ps = getConnection().prepareStatement("DELETE FROM scores WHERE id = " + studentid);
+            ps.execute();
+            return true;
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

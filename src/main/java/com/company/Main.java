@@ -1,13 +1,14 @@
 package com.company;
 import com.company.menu.BookMenu;
+import com.company.menu.StudentMenu;
 
 public class Main {
     public static void main(String[] args) {
 
        //DBConnection.getConnection();
 
-        //StudentMenu.menu();
-        BookMenu.menu();
+        StudentMenu.menu();
+        //BookMenu.menu();
 
 
     }

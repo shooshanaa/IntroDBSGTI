@@ -77,9 +77,35 @@ public class BookController {
             return false;
         }
 
-
-
     }
+
+   public static void editBook() {
+
+       System.out.println("Enter the ID of the book: ");
+       int id = scanner.nextInt();
+
+       System.out.println("What field would you like to edit? (name, price) ");
+       String fieldToEdit = scanner.next();
+
+       System.out.println("What value do you want to enter? ");
+       String update = scanner.next();
+
+       try {
+           ps = getConnection().prepareStatement("UPDATE books SET " + fieldToEdit + " = '" + update + "' WHERE id=" + id);
+           ps.execute();
+           System.out.println("Successfully updated book data");
+
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+
+
+
+   }
+
+
+
+
 
 
 }
