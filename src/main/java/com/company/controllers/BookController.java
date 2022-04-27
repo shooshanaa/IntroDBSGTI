@@ -63,5 +63,23 @@ public class BookController {
 
     }
 
+    public static boolean deleteBook(){
+        System.out.println("Enter the id of the book you want to delete: ");
+        int id = scanner.nextInt();
+
+
+        try {
+            ps = getConnection().prepareStatement("DELETE FROM books WHERE id=" + id);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Database error");
+            return false;
+        }
+
+
+
+    }
+
 
 }
