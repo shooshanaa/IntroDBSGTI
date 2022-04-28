@@ -138,4 +138,36 @@ public class StudentController {
         }
     }
 
+    /*public static void deleteScore(int id){
+
+        try {
+            ps = getConnection().prepareStatement(("DELETE FROM scores WHERE id = " + id) && ("DELETE FROM students WHERE id = studentid " + studentid));
+            ps.execute();
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+
+    }
+*/
+    public static void editScore() {
+        System.out.println("Enter the ID of the student: ");
+        int studentid = scanner.nextInt();
+
+        System.out.println("What field would you like to edit? (mathematics, English, physics, chemistry) ");
+        String fieldToEdit = scanner.next();
+
+        System.out.println("What value do you want to enter? ");
+        String update = scanner.next();
+
+        try {
+            ps = getConnection().prepareStatement("UPDATE scores SET " + fieldToEdit + " = '" + update + "' WHERE id=" + studentid);
+            ps.execute();
+            System.out.println("Successfully updated scores");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
