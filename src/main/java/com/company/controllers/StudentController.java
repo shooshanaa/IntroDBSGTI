@@ -138,10 +138,10 @@ public class StudentController {
         }
     }
 
-    /*public static void deleteScore(int id){
+    public static void deleteScore(int id){
 
         try {
-            ps = getConnection().prepareStatement(("DELETE FROM scores WHERE id = " + id) && ("DELETE FROM students WHERE id = studentid " + studentid));
+            ps = getConnection().prepareStatement("DELETE FROM scores && students WHERE id = " + id);
             ps.execute();
 
         }catch (SQLException e) {
@@ -150,7 +150,6 @@ public class StudentController {
         }
 
     }
-*/
     public static void editScore() {
         System.out.println("Enter the ID of the student: ");
         int studentid = scanner.nextInt();
