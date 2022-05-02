@@ -1,5 +1,7 @@
 package com.company.login;
 
+import com.company.objects.Student;
+
 import java.beans.PropertyEditor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,17 +52,38 @@ public class Auth {
 }
     public static boolean login(){
         System.out.println("Enter username: ");
-        String username = scanner.nextLine();
+        String loginUsername = scanner.nextLine();
 
         System.out.print("Enter password:");
-        String password = scanner.nextLine();
+        String loginPassword = scanner.nextLine();
 
 
 
         try {
-            ps = getConnection().prepareStatement("SELECT * FROM users WHERE username = '" + username + "' and password = '" + password + "'");
-            ps.execute();
-            return true;
+         //   ps = getConnection().prepareStatement("SELECT * FROM users WHERE username = '" + loginUsername + "' and password = '" + loginPassword + "'");
+            ps = getConnection().prepareStatement("SELECT * FROM users WHERE username = ?  and password = ?");
+            ps.setString(1, loginUsername);
+            ps.setString(2, loginPassword);
+
+            rs= ps.executeQuery();
+
+
+
+
+           // String username, password;
+
+
+            if (rs.next()){
+
+             /*   loginUsername = rs.getString("username");
+                loginPassword = rs.getString("password");
+*/
+                return true;
+            }
+            return false;
+
+
+
 
         } catch (SQLException e) {
             System.out.println("Invalid password or username.");
