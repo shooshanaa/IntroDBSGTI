@@ -88,8 +88,13 @@ public class StudentController {
         int id = scanner.nextInt();
 
         try {
+
+            deleteScore(id);
             ps = getConnection().prepareStatement("DELETE FROM students WHERE id = " + id);
             ps.execute();
+
+            System.out.println("Deleted student and related scores successfully.");
+
 
         }catch (SQLException e) {
             e.printStackTrace();
@@ -141,7 +146,7 @@ public class StudentController {
     public static void deleteScore(int id){
 
         try {
-            ps = getConnection().prepareStatement("DELETE FROM scores && students WHERE id = " + id);
+            ps = getConnection().prepareStatement("DELETE FROM scores WHERE studentid = " + id);
             ps.execute();
 
         }catch (SQLException e) {
@@ -158,10 +163,10 @@ public class StudentController {
         String fieldToEdit = scanner.next();
 
         System.out.println("What value do you want to enter? ");
-        String update = scanner.next();
+        int update = scanner.nextInt();
 
         try {
-            ps = getConnection().prepareStatement("UPDATE scores SET " + fieldToEdit + " = '" + update + "' WHERE id=" + studentid);
+            ps = getConnection().prepareStatement("UPDATE scores SET " + fieldToEdit + " = " + update + " WHERE id=" + studentid);
             ps.execute();
             System.out.println("Successfully updated scores");
         } catch (Exception e) {

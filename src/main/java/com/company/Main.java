@@ -1,14 +1,35 @@
 package com.company;
+import com.company.login.Auth;
+import com.company.menu.AuthorsMenu;
 import com.company.menu.BookMenu;
 import com.company.menu.StudentMenu;
+import com.company.objects.Authors;
 
 public class Main {
     public static void main(String[] args) {
 
+  /*     if(Auth.singUp()) {
+
+           StudentMenu.menu();
+       } else {
+           System.out.println("Invalid login credentials");
+       }*/
+
+       if(Auth.login()) {
+           StudentMenu.menu();
+       } else {
+           System.out.println("Password or username wrong");
+       }
+
        //DBConnection.getConnection();
 
-        StudentMenu.menu();
+      //  StudentMenu.menu();
+
+
         //BookMenu.menu();
+
+        //AuthorsMenu.menu();
+
 
 
     }
